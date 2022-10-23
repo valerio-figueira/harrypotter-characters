@@ -1,4 +1,4 @@
-const URL = 'http://hp-api.herokuapp.com/api/characters';
+const URL = 'https://hp-api.herokuapp.com/api/characters';
 const characters = await fetchCharacters();
 
 async function fetchCharacters(){
