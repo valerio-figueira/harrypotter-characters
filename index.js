@@ -53,8 +53,8 @@ function pagesController(start, end){
         prev.disabled = false;
         next.disabled = false;
     }
-    renderCharacters(characters, start, end);
     searchController();
+    renderCharacters(characters, start, end);    
     window.open('#header', '_self');
 };
 
@@ -74,9 +74,9 @@ function openPopup(){
                     popup.addEventListener('click', (e) => {
                         if(!e.target.matches('.character-img')){
                             popup.classList.remove('open');
-                            gallery.style.filter = 'blur(0)'
+                            gallery.style.filter = 'blur(0)';
                         };
-                    }); gallery.style.filter = 'blur(2px)'
+                    }); gallery.style.filter = 'blur(2px)';
                 };
             };
         });
@@ -125,5 +125,6 @@ function searchEngine(){
             return lowerCaseCharacter.includes(lowerCaseInput);
         });
         renderCharacters(filteredCharacters);
+        start = 0; end = 10;
     });
 };
