@@ -25,7 +25,7 @@ function renderCharacters(characters, start = 0, end = 10){
         `;
     }).join('');
     openPopup();
-    searchEngine();
+    searchController();
 };
 
 const index = 10;
@@ -35,6 +35,7 @@ const prev = document.querySelector('.prev-btn');
 const next = document.querySelector('.next-btn');
 
 renderCharacters(characters);
+searchEngine();
 
 prev.addEventListener('click', () => pagesController(start -= index, end -= index));
 next.addEventListener('click', () => pagesController(start += index, end += index));
@@ -53,7 +54,7 @@ function pagesController(start, end){
         next.disabled = false;
     }
     renderCharacters(characters, start, end);
-    searchEngine();
+    searchController();
     window.open('#header', '_self');
 };
 
@@ -91,10 +92,9 @@ function createPopupImage(image){
 };
 
 
-function searchEngine(){
+function searchController(){
     const searchBtn = document.querySelector('.search-btn');
     const searchBar = document.querySelector('.search-bar');
-    const searchInput = document.querySelector('#search-input');
     
     searchBtn.addEventListener('click', () => {
         if(!searchBar.matches('.open')){
@@ -112,6 +112,11 @@ function searchEngine(){
             searchBar.classList.remove('open');
         };
     });
+}
+
+
+function searchEngine(){
+    const searchInput = document.querySelector('#search-input');
 
     searchInput.addEventListener('keyup', (e) => {
         const lowerCaseInput = e.target.value.toLowerCase();
